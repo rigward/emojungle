@@ -1,0 +1,18 @@
+<div>Width: <input type="number" [(ngModel)]="canvasWidth" (change)="setCanvasBackground()"></div>
+<div>Height: <input type="number" [(ngModel)]="canvasHeight" (change)="setCanvasBackground()"></div>
+<div>Choose background: <input type="text" [(ngModel)]="backgroundSymbol" (change)="setCanvasBackground()"></div>
+<br>
+
+<div>
+    <span>Current brush: <input type="text"></span>
+    <br>
+    <button>Copy Result</button>
+</div>
+<br>
+<div (mouseup)="removeFlag()" (mousedown)="setFlag($event)">
+    <div class="noselect" *ngFor="let line of canvas; let y = index;">
+        <div (mousemove)="drawImage($event)" class="emoji" *ngFor="let item of line; let x = index;"
+            [attr.y]="y" [attr.x]="x"
+        >{{item}}</div>
+    </div>
+</div>
