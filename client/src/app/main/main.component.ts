@@ -21,8 +21,8 @@ export class MainComponent implements OnInit {
 
   setCanvasBackground(){
     let canvas = [];
-    const line = Array(this.canvasHeight).fill(this.backgroundSymbol);
-    for (let x = 0; x <= this.canvasWidth; x++) {
+    const line = Array(this.canvasWidth).fill(this.backgroundSymbol);
+    for (let x = 0; x < this.canvasHeight; x++) {
       canvas.push([...line]);
     }
     this.canvas = canvas;
