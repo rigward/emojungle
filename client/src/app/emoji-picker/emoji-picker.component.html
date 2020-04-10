@@ -1,0 +1,6 @@
+<button type="button" class="btn btn-outline-primary" (click)="isShowPicker = !isShowPicker">{{buttonTitle}}</button>
+
+<div [hidden]="!isShowPicker && !isAlwaysShow">
+    <br>
+    <emoji-mart (emojiClick)="emojiSelected($event)"></emoji-mart>
+</div>

@@ -8,18 +8,24 @@ import { FormsModule } from '@angular/forms';
 
 import { PickerModule } from '@ctrl/ngx-emoji-mart';
 import { ClipboardModule } from 'ngx-clipboard';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { EmojiPickerComponent } from './emoji-picker/emoji-picker.component';
+import { DimensionPickerComponent } from './dimension-picker/dimension-picker.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    MainComponent
+    MainComponent,
+    EmojiPickerComponent,
+    DimensionPickerComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
     PickerModule,
-    ClipboardModule
+    ClipboardModule,
+    NgbModule
   ],
   providers: [],
   bootstrap: [AppComponent]

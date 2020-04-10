@@ -19,6 +19,12 @@ export class MainComponent implements OnInit {
     this.setCanvasBackground();
   }
 
+  onBackgroundPickerChanged($event){
+    console.log($event);
+    this.backgroundSymbol = $event;
+    this.setCanvasBackground();
+  }
+
   setCanvasBackground(){
     let canvas = [];
     const line = Array(this.canvasWidth).fill(this.backgroundSymbol);
@@ -49,10 +55,6 @@ export class MainComponent implements OnInit {
   
   removeFlag(){
      this.isMouseDown = false;
-  }
-
-  newBrushSelected($event){
-    this.currentBrush = $event.emoji.native;
   }
 
   copyResult(){
