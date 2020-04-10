@@ -6,6 +6,9 @@ import { AppComponent } from './app.component';
 import { MainComponent } from './main/main.component';
 import { FormsModule } from '@angular/forms';
 
+import { PickerModule } from '@ctrl/ngx-emoji-mart';
+import { ClipboardModule } from 'ngx-clipboard';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -14,7 +17,9 @@ import { FormsModule } from '@angular/forms';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,
+    PickerModule,
+    ClipboardModule
   ],
   providers: [],
   bootstrap: [AppComponent]

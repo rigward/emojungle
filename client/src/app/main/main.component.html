@@ -1,13 +1,11 @@
 <div>Width: <input type="number" [(ngModel)]="canvasWidth" (change)="setCanvasBackground()"></div>
 <div>Height: <input type="number" [(ngModel)]="canvasHeight" (change)="setCanvasBackground()"></div>
-<div>Choose background: <input type="text" [(ngModel)]="backgroundSymbol" (change)="setCanvasBackground()"></div>
-<br>
+<div>Background: <input type="text" [(ngModel)]="backgroundSymbol" (change)="setCanvasBackground()"></div>
+<div>Brush: {{currentBrush}}</div>
 
-<div>
-    <span>Current brush: <input type="text"></span>
-    <br>
-    <button>Copy Result</button>
-</div>
+<br>
+<emoji-mart (emojiClick)="newBrushSelected($event)"></emoji-mart>
+<br>
 <br>
 <div (mouseup)="removeFlag()" (mousedown)="setFlag($event)">
     <div class="noselect" *ngFor="let line of canvas; let y = index;">
@@ -16,3 +14,4 @@
         >{{item}}</div>
     </div>
 </div>
+<button (click)="copyResult()">Copy Result</button>

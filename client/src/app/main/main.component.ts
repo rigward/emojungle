@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ClipboardService } from 'ngx-clipboard'
 
 @Component({
   selector: 'app-main',
@@ -9,12 +10,12 @@ export class MainComponent implements OnInit {
   canvasWidth = 20;
   canvasHeight = 20;
   backgroundSymbol = '🌕'
-  currentSymbol = '🌚'
+  currentBrush = '🌚'
   canvas: Array<Array<string>>;
 
   isMouseDown: Boolean = false;
 
-  constructor() {
+  constructor(private _clipboardService: ClipboardService) {
     this.setCanvasBackground();
   }
 
@@ -31,7 +32,6 @@ export class MainComponent implements OnInit {
     if(!this.isMouseDown){
       return;
     }
-    console.log($event);
     const getAttr = (attrName) => parseInt($event.target.getAttribute(attrName));
     const y = getAttr('y');
     const x = getAttr('x');
@@ -39,7 +39,7 @@ export class MainComponent implements OnInit {
   }
 
   setCanvasItem(y: number, x: number){
-    this.canvas[y][x] = this.currentSymbol;
+    this.canvas[y][x] = this.currentBrush;
   }
    
   setFlag($event){
@@ -49,6 +49,16 @@ export class MainComponent implements OnInit {
   
   removeFlag(){
      this.isMouseDown = false;
+  }
+
+  newBrushSelected($event){
+    this.currentBrush = $event.emoji.native;
+  }
+
+  copyResult(){
+    const lines: Array<string> = this.canvas.map(line => line.join(''));
+    const res = lines.join('\n');
+    this._clipboardService.copyFromContent(res);
   }
 
   ngOnInit(): void {}
