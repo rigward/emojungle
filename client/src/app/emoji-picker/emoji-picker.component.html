@@ -1,6 +1,11 @@
-<button type="button" class="btn btn-outline-primary" (click)="isShowPicker = !isShowPicker">{{buttonTitle}}</button>
-
-<div [hidden]="!isShowPicker && !isAlwaysShow">
-    <br>
-    <emoji-mart (emojiClick)="emojiSelected($event)"></emoji-mart>
+<div class="wrapper">
+    <button type="button" class="btn btn-block btn-outline-secondary picker-button" (click)="isShowPicker = !isShowPicker"
+        [class.picker-shown]="isShowPicker || isAlwaysShow"
+    >{{buttonTitle}}</button>
+    <div [hidden]="!isShowPicker && !isAlwaysShow">
+        <emoji-mart (emojiClick)="emojiSelected($event)"
+            [style]="{ 'border-top-style': 'none', 'border-top-left-radius': '0', 'border-top-right-radius': '0' }"
+            [title]="' '"
+        ></emoji-mart>
+    </div>
 </div>

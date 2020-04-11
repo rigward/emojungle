@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-dimension-picker',
@@ -7,7 +7,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DimensionPickerComponent implements OnInit {
 
+  @Input() value: number;
+  @Output() valueChange = new EventEmitter();
+
+  @Input() title: string;
+
   constructor() { }
+
+  onValueChanged(){
+    this.valueChange.emit(this.value);
+  }
 
   ngOnInit(): void {
   }

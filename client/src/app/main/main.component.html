@@ -1,36 +1,22 @@
 <div class="wrapper">
 <div class="row">
-    <div class="col-md-4">
-        <input type="number" min="1" max="100">
-        <div class="input-group mb-3">
-            <div class="input-group-prepend">
-                <span class="input-group-text" id="width-describe">Width&nbsp;</span>
-            </div>
-            <input type="number" min="0" max="100" class="form-control" placeholder="Canvas width"
-                aria-label="Canvas width"aria-describedby="width-describe"
-                [(ngModel)]="canvasWidth" (change)="setCanvasBackground()"
-            >
-        </div>
-        <div class="input-group mb-3">
-            <div class="input-group-prepend">
-                <span class="input-group-text" id="width-describe">Height</span>
-            </div>
-            <input type="number" min="0" max="1 00" class="form-control" placeholder="Canvas height"
-                aria-label="Canvas height" aria-describedby="height-describe"
-                [(ngModel)]="canvasHeight" (change)="setCanvasBackground()"
-            >
-        </div>
+    <div class="col-md-3">
+        <app-dimension-picker class="float-left" [title]="'Width&nbsp;'" [(value)]="canvasWidth" (valueChange)="onDimensionChanged()"></app-dimension-picker>
+        <app-dimension-picker [title]="'Height'" [(value)]="canvasHeight" (valueChange)="onDimensionChanged()"></app-dimension-picker>
+        <button class="btn btn-secondary" (click)="copyResult()">Copy Result</button>&nbsp;
+        <button class="btn btn-secondary" (click)="resetCanvas()">Reset canvas</button>
+        <br>
+        <app-emoji-picker [buttonTitle]="'Background ' + backgroundSymbol" [chosenSymbol] = "backgroundSymbol"
+        (chosenSymbolChange) = "onBackgroundPickerChanged($event)"
+        >
+        </app-emoji-picker>
+        <br>
+        <br>
         <app-emoji-picker [buttonTitle]="'Brush ' + currentBrush" [(chosenSymbol)] = "currentBrush"
             [isAlwaysShow]="true"
         ></app-emoji-picker>
-        <br>
-        <app-emoji-picker [buttonTitle]="'Background ' + backgroundSymbol" [chosenSymbol] = "backgroundSymbol"
-            (chosenSymbolChange) = "onBackgroundPickerChanged($event)"
-        >
-        </app-emoji-picker>
-        
     </div>
-    <div class="col-md-8">
+    <div class="col-md-9">
         <div (mouseup)="removeFlag()" (mousedown)="setFlag($event)">
             <div class="noselect" *ngFor="let line of canvas; let y = index;">
                 <div (mousemove)="drawImage($event)" class="emoji" *ngFor="let item of line; let x = index;"
@@ -38,7 +24,6 @@
                 >{{item}}</div>
             </div>
         </div>
-        <button (click)="copyResult()">Copy Result</button>
     </div>
 </div>
 </div>

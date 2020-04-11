@@ -14,18 +14,29 @@ export class MainComponent implements OnInit {
   canvas: Array<Array<string>>;
 
   isMouseDown: Boolean = false;
+  maxDimension = 100;
 
   constructor(private _clipboardService: ClipboardService) {
-    this.setCanvasBackground();
+    this.resetCanvas();
   }
 
   onBackgroundPickerChanged($event){
     console.log($event);
     this.backgroundSymbol = $event;
-    this.setCanvasBackground();
+    this.resetCanvas();
   }
 
-  setCanvasBackground(){
+  onDimensionChanged(){
+    const validateDimension = x => Math.max(Math.min(this.maxDimension || 0, x), 1);
+    console.log('dimensions on change: ', this.canvasWidth, this.canvasHeight);
+    this.canvasWidth = validateDimension(this.canvasWidth);
+    this.canvasHeight = validateDimension(this.canvasHeight);
+    console.log('width after change: ', this.canvasWidth);
+    console.log('height after change: ', this.canvasHeight);
+    this.resetCanvas();
+  }
+
+  resetCanvas(){
     let canvas = [];
     const line = Array(this.canvasWidth).fill(this.backgroundSymbol);
     for (let x = 0; x < this.canvasHeight; x++) {
