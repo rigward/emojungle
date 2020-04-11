@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, HostListener } from '@angular/core';
 import { ClipboardService } from 'ngx-clipboard'
 
 @Component({
@@ -45,7 +45,7 @@ export class MainComponent implements OnInit {
     this.canvas = canvas;
   }
 
-  drawImage($event){
+  onMouseMoved($event){
     if(!this.isMouseDown){
       return;
     }
@@ -55,17 +55,25 @@ export class MainComponent implements OnInit {
     this.setCanvasItem(y, x);
   }
 
+  onMouseClicked($event){
+    const getAttr = (attrName) => parseInt($event.target.getAttribute(attrName));
+    const y = getAttr('y');
+    const x = getAttr('x');
+    this.setCanvasItem(y, x);
+  }
+
   setCanvasItem(y: number, x: number){
     this.canvas[y][x] = this.currentBrush;
   }
-   
-  setFlag($event){
-     this.isMouseDown = true;
-     this.drawImage($event);
+
+  @HostListener('document:mouseup', ['$event'])
+  onMouseUp(event: MouseEvent) {
+    this.isMouseDown = false;
   }
-  
-  removeFlag(){
-     this.isMouseDown = false;
+
+  @HostListener('document:mousedown', ['$event'])
+  onMouseDown(event: MouseEvent) {
+    this.isMouseDown = true;
   }
 
   copyResult(){

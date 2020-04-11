@@ -46,10 +46,11 @@
       </div>
     </div>
     <div class="col text-center">
-      <div (mouseup)="removeFlag()" (mousedown)="setFlag($event)">
+      <div>
         <div class="noselect" *ngFor="let line of canvas; let y = index">
           <div
-            (mousemove)="drawImage($event)"
+            (mousemove)="onMouseMoved($event)"
+            (click)="onMouseClicked($event)"
             class="emoji"
             *ngFor="let item of line; let x = index"
             [attr.y]="y"
