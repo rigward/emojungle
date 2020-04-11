@@ -1,29 +1,64 @@
-<div class="wrapper">
-<div class="row">
-    <div class="col-md-3">
-        <app-dimension-picker class="float-left" [title]="'Width&nbsp;'" [(value)]="canvasWidth" (valueChange)="onDimensionChanged()"></app-dimension-picker>
-        <app-dimension-picker [title]="'Height'" [(value)]="canvasHeight" (valueChange)="onDimensionChanged()"></app-dimension-picker>
-        <button class="btn btn-secondary" (click)="copyResult()">Copy Result</button>&nbsp;
-        <button class="btn btn-secondary" (click)="resetCanvas()">Reset canvas</button>
-        <br>
-        <app-emoji-picker [buttonTitle]="'Background ' + backgroundSymbol" [chosenSymbol] = "backgroundSymbol"
-        (chosenSymbolChange) = "onBackgroundPickerChanged($event)"
-        >
-        </app-emoji-picker>
-        <br>
-        <br>
-        <app-emoji-picker [buttonTitle]="'Brush ' + currentBrush" [(chosenSymbol)] = "currentBrush"
-            [isAlwaysShow]="true"
-        ></app-emoji-picker>
-    </div>
-    <div class="col-md-9">
-        <div (mouseup)="removeFlag()" (mousedown)="setFlag($event)">
-            <div class="noselect" *ngFor="let line of canvas; let y = index;">
-                <div (mousemove)="drawImage($event)" class="emoji" *ngFor="let item of line; let x = index;"
-                    [attr.y]="y" [attr.x]="x"
-                >{{item}}</div>
-            </div>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col my-sidebar">
+      <div class="row">
+        <div class="col-md-6">
+          <app-dimension-picker
+            [title]="'Width&nbsp;'"
+            [(value)]="canvasWidth"
+            (valueChange)="onDimensionChanged()"
+          ></app-dimension-picker>
         </div>
+        <div class="col-md-6">
+          <app-dimension-picker
+            [title]="'Height'"
+            [(value)]="canvasHeight"
+            (valueChange)="onDimensionChanged()"
+          ></app-dimension-picker>
+        </div>
+      </div>
+      <div class="row mb-3">
+        <div class="col-md-6">
+            <button class="btn btn-block btn-secondary" (click)="copyResult()">Copy Result</button>
+        </div>
+        <div class="col-md-6">
+            <button class="btn btn-block btn-secondary" (click)="resetCanvas()">Reset canvas</button>
+        </div>
+      </div>
+      <div class="row mb-3">
+          <div class="col-md-6">
+            <app-emoji-picker
+                [buttonTitle]="'Background ' + backgroundSymbol"
+                [chosenSymbol]="backgroundSymbol"
+                (chosenSymbolChange)="onBackgroundPickerChanged($event)"
+            >
+            </app-emoji-picker>
+          </div>
+        </div>
+      <div class="row">
+          <div class="col">
+            <app-emoji-picker
+                [buttonTitle]="'Brush ' + currentBrush"
+                [(chosenSymbol)]="currentBrush"
+                [isAlwaysShow]="true"
+            ></app-emoji-picker>
+        </div>
+      </div>
     </div>
-</div>
+    <div class="col text-center">
+      <div (mouseup)="removeFlag()" (mousedown)="setFlag($event)">
+        <div class="noselect" *ngFor="let line of canvas; let y = index">
+          <div
+            (mousemove)="drawImage($event)"
+            class="emoji"
+            *ngFor="let item of line; let x = index"
+            [attr.y]="y"
+            [attr.x]="x"
+          >
+            {{ item }}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>

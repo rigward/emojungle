@@ -8,10 +8,7 @@
 }
 
 .picker-shown{
+    border-bottom-style: none;
     border-bottom-left-radius: 0 !important;
     border-bottom-right-radius: 0 !important;
-}
-
-.wrapper{
-    display: inline-block;
 }
