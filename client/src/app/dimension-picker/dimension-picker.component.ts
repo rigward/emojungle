@@ -1,4 +1,5 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { debounce } from 'lodash';
 
 @Component({
   selector: 'app-dimension-picker',
@@ -12,9 +13,15 @@ export class DimensionPickerComponent implements OnInit {
 
   @Input() title: string;
 
-  constructor() { }
+  constructor() {
+    this.processChangedValue = debounce(this.processChangedValue, 650);
+  }
 
   onValueChanged(newValue){
+    this.processChangedValue(newValue);
+  }
+
+  processChangedValue(newValue){
     const integerInput = parseInt(newValue);
     if(isNaN(integerInput) || integerInput === 0){
       return;
