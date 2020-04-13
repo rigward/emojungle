@@ -73,8 +73,8 @@ export class MainComponent implements OnInit {
 
   onMouseClicked($event){
     const getAttr = (attrName) => parseInt($event.target.getAttribute(attrName));
-    const y = getAttr('y');
-    const x = getAttr('x');
+    const y = getAttr('canvas_y');
+    const x = getAttr('canvas_x');
     this.setCanvasItem(y, x);
     this.historyService.push(this.canvas);
   }
