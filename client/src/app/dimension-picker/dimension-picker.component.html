@@ -2,7 +2,8 @@
     <div class="input-group-prepend">
         <span class="input-group-text" id="item-describe">{{title}}</span>
     </div>
-    <input type="number" min="1" max="100" class="form-control" aria-describedby="item-describe"
-        [(ngModel)]="value" (ngModelChange)="onValueChanged()"
+    <input type="text" digitOnly maxlength=2 class="form-control" aria-describedby="item-describe"
+        autocomplete="off"
+        [ngModel]="value" (ngModelChange)="onValueChanged($event)"
     >
 </div>

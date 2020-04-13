@@ -1,5 +1,5 @@
 <div class="container-fluid">
-  <div class="row">
+  <div class="row no-flex-wrap">
     <div class="col my-sidebar">
       <div class="row">
         <div class="col-md-6">
@@ -26,9 +26,21 @@
         </div>
       </div>
       <div class="row mb-3">
+        <div class="col-md-6">
+            <button class="btn btn-block btn-secondary" (click)="loadPrevCanvasState()">
+              Undo <span class="button-emoji">↪️</span>
+            </button>
+        </div>
+        <div class="col-md-6">
+            <button class="btn btn-block btn-secondary" (click)="loadNextCanvasState()">
+              Redo <span class="button-emoji">↩️</span>
+            </button>
+        </div>
+      </div>
+      <div class="row mb-3">
           <div class="col-md-6">
             <app-emoji-picker
-                [buttonTitle]="'Background ' + backgroundSymbol"
+                [buttonTitle]="'Background'"
                 [chosenSymbol]="backgroundSymbol"
                 (chosenSymbolChange)="onBackgroundPickerChanged($event)"
             >
@@ -38,7 +50,7 @@
       <div class="row">
           <div class="col">
             <app-emoji-picker
-                [buttonTitle]="'Brush ' + currentBrush"
+                [buttonTitle]="'Brush'"
                 [(chosenSymbol)]="currentBrush"
                 [isAlwaysShow]="true"
             ></app-emoji-picker>
@@ -47,14 +59,14 @@
     </div>
     <div class="col text-center">
       <div>
-        <div class="noselect" *ngFor="let line of canvas; let y = index">
+        <div class="canvas-row noselect" *ngFor="let line of canvas; let y = index">
           <div
             (mousemove)="onMouseMoved($event)"
             (click)="onMouseClicked($event)"
             class="emoji"
             *ngFor="let item of line; let x = index"
-            [attr.y]="y"
-            [attr.x]="x"
+            [attr.canvas_y]="y"
+            [attr.canvas_x]="x"
           >
             {{ item }}
           </div>

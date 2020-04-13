@@ -1,7 +1,7 @@
 .emoji {
     font-size: 150%;
     line-height: 25px;
-    display: inline-block;
+    display: table-cell;
     cursor: crosshair;
 }
 
@@ -15,4 +15,12 @@
 .my-sidebar {
     -ms-flex: 0 0 368px;
     flex: 0 0 368px;
+}
+
+.canvas-row{
+    display: table-row;
+}
+
+.no-flex-wrap {
+    flex-wrap: nowrap;
 }

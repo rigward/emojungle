@@ -11,6 +11,7 @@ import { ClipboardModule } from 'ngx-clipboard';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { EmojiPickerComponent } from './emoji-picker/emoji-picker.component';
 import { DimensionPickerComponent } from './dimension-picker/dimension-picker.component';
+import { DigitOnlyModule } from '@uiowa/digit-only';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { DimensionPickerComponent } from './dimension-picker/dimension-picker.co
     FormsModule,
     PickerModule,
     ClipboardModule,
-    NgbModule
+    NgbModule,
+    DigitOnlyModule
   ],
   providers: [],
   bootstrap: [AppComponent]

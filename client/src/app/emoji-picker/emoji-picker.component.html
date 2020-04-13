@@ -1,6 +1,6 @@
 <button type="button" class="btn btn-block btn-outline-secondary picker-button" (click)="isShowPicker = !isShowPicker"
     [class.picker-shown]="isShowPicker || isAlwaysShow"
->{{buttonTitle}}</button>
+>{{buttonTitle}}&nbsp;<span class="button-emoji">{{chosenSymbol}}</span></button>
 <div [hidden]="!isShowPicker && !isAlwaysShow">
     <emoji-mart (emojiClick)="emojiSelected($event)"
         [style]="{ 'border-top-left-radius': '0', 'border-top-right-radius': '0' }"

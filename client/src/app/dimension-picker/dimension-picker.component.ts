@@ -14,7 +14,12 @@ export class DimensionPickerComponent implements OnInit {
 
   constructor() { }
 
-  onValueChanged(){
+  onValueChanged(newValue){
+    const integerInput = parseInt(newValue);
+    if(isNaN(integerInput) || integerInput === 0){
+      return;
+    }
+    this.value = integerInput;
     this.valueChange.emit(this.value);
   }
 
