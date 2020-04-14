@@ -7,10 +7,9 @@ export class HistoryService {
   maxHistorySize = 100;
   memory: Array<any> = [];
   currentMemoryPointer: number = -1;
+  allUsedEmoji: Array<string> = [];
 
-  constructor() {
-
-  }
+  constructor() {}
  
   push(data){
     const encodedData = JSON.stringify(data);
@@ -25,6 +24,7 @@ export class HistoryService {
       this.memory.shift();
       this.currentMemoryPointer -= 1;
     }
+    this.updateUsedEmoji(data);
   }
 
   getPreviousState(){
@@ -43,8 +43,18 @@ export class HistoryService {
 
   getCurrentMemoryObject(){
     if(this.currentMemoryPointer > -1 && this.currentMemoryPointer < this.memory.length){
-      return JSON.parse(this.memory[this.currentMemoryPointer])
+      const canvas = JSON.parse(this.memory[this.currentMemoryPointer]);
+      this.updateUsedEmoji(canvas);
+      return canvas;
     }
     return null;
+  }
+
+  updateUsedEmoji(canvas: Array<Array<string>>){
+    const usedEmoji: Set<string> = new Set();
+    canvas.forEach(line => line.forEach(el => usedEmoji.add(el)));
+    const emojiArray = [...usedEmoji.values()];
+    emojiArray.sort();
+    this.allUsedEmoji = emojiArray;
   }
 }

@@ -23,7 +23,6 @@ export class EmojiPickerComponent implements OnInit {
   }
 
   emojiSelected($event){
-    console.log($event.emoji.native);
     if(!this.isAlwaysShow){
       this.isShowPicker = false;
     }

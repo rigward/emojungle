@@ -49,6 +49,11 @@
         </div>
       <div class="row">
           <div class="col">
+            <app-recent-emoji (emojiSelected)="recentEmojiClicked($event)"></app-recent-emoji>
+        </div>
+      </div>      
+      <div class="row">
+          <div class="col">
             <app-emoji-picker
                 [buttonTitle]="'Brush'"
                 [(chosenSymbol)]="currentBrush"
@@ -63,7 +68,7 @@
           <div
             (mousemove)="onMouseMoved($event)"
             (click)="onMouseClicked($event)"
-            class="emoji"
+            class="emoji emoji-hover"
             *ngFor="let item of line; let x = index"
             [attr.canvas_y]="y"
             [attr.canvas_x]="x"

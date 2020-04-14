@@ -12,13 +12,15 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { EmojiPickerComponent } from './emoji-picker/emoji-picker.component';
 import { DimensionPickerComponent } from './dimension-picker/dimension-picker.component';
 import { DigitOnlyModule } from '@uiowa/digit-only';
+import { RecentEmojiComponent } from './recent-emoji/recent-emoji.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     MainComponent,
     EmojiPickerComponent,
-    DimensionPickerComponent
+    DimensionPickerComponent,
+    RecentEmojiComponent
   ],
   imports: [
     BrowserModule,

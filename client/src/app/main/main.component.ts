@@ -128,5 +128,9 @@ export class MainComponent implements OnInit {
     this._clipboardService.copyFromContent(res);
   }
 
+  recentEmojiClicked(newEmoji){
+    this.currentBrush = newEmoji;
+  }
+
   ngOnInit(): void {}
 }
