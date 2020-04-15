@@ -135,7 +135,7 @@ export class MainComponent implements OnInit {
   @HostListener('document:keydown.meta.c')
   copyResult(){
     const lines: Array<string> = this.canvas.map(line => line.join(''));
-    const res = lines.join('\n');
+    const res = lines.join('\n') + '\ncreated with https://rigward.github.io/emojungle';
     this._clipboardService.copyFromContent(res);
   }
 
