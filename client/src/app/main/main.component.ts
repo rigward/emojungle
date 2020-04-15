@@ -101,16 +101,27 @@ export class MainComponent implements OnInit {
 
   // memory
 
-  @HostListener('document:keydown.meta.z')
+  @HostListener('document:keydown.meta.z', ['$event'])
+  onCtrlZExecuted(e: any){
+    e.preventDefault();
+    this.loadPrevCanvasState();
+  }
+
   loadPrevCanvasState(){
     if(this.isMouseDown){
       return;
     }
     const state = this.historyService.getPreviousState();
     this.canvas = state;
+    
   }
 
-  @HostListener('document:keydown.shift.meta.z')
+  @HostListener('document:keydown.shift.meta.z', ['$event'])
+  onCtrlShiftZExecuted(e: any){
+    e.preventDefault();
+    this.loadNextCanvasState();
+  }
+
   loadNextCanvasState(){
     if(this.isMouseDown){
       return;
