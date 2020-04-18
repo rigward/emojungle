@@ -22,9 +22,15 @@ export class MainComponent implements OnInit {
     this.resetCanvas();
   }
 
-  onBackgroundPickerChanged($event){
-    this.backgroundSymbol = $event;
-    this.resetCanvas();
+  onBackgroundPickerChanged(newBackgroundSymbol: string){
+    const oldBackgroundSymbol = this.backgroundSymbol
+    this.backgroundSymbol = newBackgroundSymbol;
+    this.canvas.forEach(line => line.forEach((el, i) => {
+      if (el == oldBackgroundSymbol){
+        line[i] = this.backgroundSymbol;
+      } 
+    }))
+    this.historyService.push(this.canvas);
   }
 
   onDimensionChanged(){
