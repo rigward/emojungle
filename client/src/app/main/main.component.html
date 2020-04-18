@@ -1,64 +1,66 @@
 <div class="container-fluid">
   <div class="row no-flex-wrap">
     <div class="col my-sidebar">
-      <div class="row">
-        <div class="col-md-6">
-          <app-dimension-picker
-            [title]="'Width&nbsp;'"
-            [(value)]="canvasWidth"
-            (valueChange)="onDimensionChanged()"
-          ></app-dimension-picker>
-        </div>
-        <div class="col-md-6">
-          <app-dimension-picker
-            [title]="'Height'"
-            [(value)]="canvasHeight"
-            (valueChange)="onDimensionChanged()"
-          ></app-dimension-picker>
-        </div>
-      </div>
-      <div class="row mb-3">
-        <div class="col-md-6">
-            <button class="btn btn-block btn-secondary" (click)="copyResult()">Copy Result</button>
-        </div>
-        <div class="col-md-6">
-            <button class="btn btn-block btn-secondary" (click)="resetCanvas()">Reset canvas</button>
-        </div>
-      </div>
-      <div class="row mb-3">
-        <div class="col-md-6">
-            <button class="btn btn-block btn-secondary" (click)="loadPrevCanvasState()">
-              Undo <span class="button-emoji">↪️</span>
-            </button>
-        </div>
-        <div class="col-md-6">
-            <button class="btn btn-block btn-secondary" (click)="loadNextCanvasState()">
-              Redo <span class="button-emoji">↩️</span>
-            </button>
-        </div>
-      </div>
-      <div class="row mb-3">
+      <div class="sticky-top">
+        <div class="row">
+          <div class="col-md-6 mb-2">
+            <app-dimension-picker
+              [title]="'Width&nbsp;'"
+              [(value)]="canvasWidth"
+              (valueChange)="onDimensionChanged()"
+            ></app-dimension-picker>
+          </div>
           <div class="col-md-6">
-            <app-emoji-picker
-                [buttonTitle]="'Background'"
-                [chosenSymbol]="backgroundSymbol"
-                (chosenSymbolChange)="onBackgroundPickerChanged($event)"
-            >
-            </app-emoji-picker>
+            <app-dimension-picker
+              [title]="'Height'"
+              [(value)]="canvasHeight"
+              (valueChange)="onDimensionChanged()"
+            ></app-dimension-picker>
           </div>
         </div>
-      <div class="row">
-          <div class="col">
-            <app-recent-emoji (emojiSelected)="recentEmojiClicked($event)"></app-recent-emoji>
+        <div class="row mb-2">
+          <div class="col-md-6">
+              <button class="btn btn-block btn-secondary" (click)="copyResult()">Copy Result</button>
+          </div>
+          <div class="col-md-6">
+              <button class="btn btn-block btn-secondary" (click)="resetCanvas()">Reset canvas</button>
+          </div>
         </div>
-      </div>      
-      <div class="row">
-          <div class="col">
-            <app-emoji-picker
-                [buttonTitle]="'Brush'"
-                [(chosenSymbol)]="currentBrush"
-                [isAlwaysShow]="true"
-            ></app-emoji-picker>
+        <div class="row mb-2">
+          <div class="col-md-6">
+              <button class="btn btn-block btn-secondary" (click)="loadPrevCanvasState()">
+                Undo <span class="button-emoji">↪️</span>
+              </button>
+          </div>
+          <div class="col-md-6">
+              <button class="btn btn-block btn-secondary" (click)="loadNextCanvasState()">
+                Redo <span class="button-emoji">↩️</span>
+              </button>
+          </div>
+        </div>
+        <div class="row mb-2">
+            <div class="col-md-6">
+              <app-emoji-picker
+                  [buttonTitle]="'Background'"
+                  [chosenSymbol]="backgroundSymbol"
+                  (chosenSymbolChange)="onBackgroundPickerChanged($event)"
+              >
+              </app-emoji-picker>
+            </div>
+          </div>
+        <div class="row">
+            <div class="col">
+              <app-recent-emoji (emojiSelected)="recentEmojiClicked($event)"></app-recent-emoji>
+          </div>
+        </div>      
+        <div class="row">
+            <div class="col">
+              <app-emoji-picker
+                  [buttonTitle]="'Brush'"
+                  [(chosenSymbol)]="currentBrush"
+                  [isAlwaysShow]="true"
+              ></app-emoji-picker>
+          </div>
         </div>
       </div>
     </div>
