@@ -5,8 +5,9 @@ Emoji painting canvas
 ## Development
 You need to have angular-cli installed to run development server and make builds: `https://cli.angular.io/`
 
-Frontend commands are run from client folder: `cd client`.  
-Install all dependencies: `npm i`
+Frontend commands are run from client folder: `cd client`  
+
+Install all dependencies: `npm i`  
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
 
