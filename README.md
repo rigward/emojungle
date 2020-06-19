@@ -1,6 +1,6 @@
 # Emojungle
 
-Emoji painting canvas
+Emoji painting canvas: https://rigward.github.io/emojungle/
 
 ![](emojungle.gif)
 
