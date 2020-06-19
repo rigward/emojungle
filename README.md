@@ -2,6 +2,8 @@
 
 Emoji painting canvas
 
+![](emojungle.gif)
+
 ## Development
 You need to have angular-cli installed to run development server and make builds: `https://cli.angular.io/`
 
